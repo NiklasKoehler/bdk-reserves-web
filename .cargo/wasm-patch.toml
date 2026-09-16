@@ -1,0 +1,4 @@
+# Passed to cargo as `--config .cargo/wasm-patch.toml` by build.sh, so the libc
+# stand-in applies to the wasm build only and native `cargo test` is unaffected.
+[patch.crates-io]
+libc = { path = "patches/libc" }

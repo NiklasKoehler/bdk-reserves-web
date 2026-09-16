@@ -5,6 +5,45 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Summary
+
+The app now runs entirely in the browser. There is no backend left.
+
+### Changed
+
+- Verification is compiled to WebAssembly and runs in the page. The PSBT is no
+  longer uploaded to a server.
+- UTXO lookups moved from Electrum to Esplora over HTTP, because a browser
+  cannot open the TCP connection Electrum needs. The server is configurable.
+- The network is worked out by parsing the addresses instead of guessing from
+  the first character, so testnet bech32 and signet addresses now work.
+- Amounts come from the transactions that created each UTXO, and each one is
+  checked against the txid requested, so the Esplora server cannot inflate the
+  reported total.
+- Confirmation depth is configurable in the UI, still defaulting to 3.
+- The page has a "Load example" button that fills in a real testnet proof,
+  along with a note explaining that its UTXOs have since been spent.
+- Verification failures are explained in plain language rather than only as the
+  enum variant `bdk-reserves` returns. The raw message is still shown.
+- The build output is a folder of static files, so `make serve` is enough to
+  run it locally and any static host can serve it. The Dockerfile and the
+  Heroku deployment are gone.
+
+### Fixed
+
+- Confirmation depth was off by one. The block a UTXO is mined in counts as its
+  first confirmation, but the old rule treated it as the zeroth, so asking for
+  3 confirmations quietly required 4.
+
+### Added
+
+- A GitHub Pages workflow that publishes the site on every push to `master`,
+  gated on the test suite passing.
+
+### Removed
+
+- The actix-web HTTP service and its `/proof` endpoint.
+
 ## [v0.1.10]
 
 ### Summary
