@@ -34,7 +34,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Set default toolchain
-        run: rustup default 1.83.0
+        run: rustup default 1.97.1
       - name: Add the wasm target
         run: rustup target add wasm32-unknown-unknown
 

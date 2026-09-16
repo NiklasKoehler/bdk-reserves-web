@@ -18,9 +18,9 @@ jobs:
     strategy:
       matrix:
         rust:
-          - version: 1.83.0 # STABLE
+          - version: 1.97.1 # STABLE
             clippy: true
-          - version: 1.78.0 # MSRV
+          - version: 1.85.0 # MSRV
     steps:
       - name: checkout
         uses: actions/checkout@v4
@@ -69,7 +69,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
       - name: Set default toolchain
-        run: rustup default 1.83.0
+        run: rustup default 1.97.1
       - name: Set profile
         run: rustup set profile minimal
       - name: Add rustfmt

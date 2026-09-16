@@ -12,7 +12,7 @@
   <p>
     <a href="https://github.com/bitcoindevkit/bdk-reserves/blob/master/LICENSE"><img alt="MIT or Apache-2.0 Licensed" src="https://img.shields.io/badge/license-MIT%2FApache--2.0-blue.svg"/></a>
     <a href="https://github.com/weareseba/bdk-reserves-web/actions?query=workflow%3ACI"><img alt="CI Status" src="https://github.com/weareseba/bdk-reserves-web/workflows/CI/badge.svg"></a>
-    <a href="https://blog.rust-lang.org/2024/05/02/Rust-1.78.0.html"><img alt="Rustc Version 1.78.0+" src="https://img.shields.io/badge/rustc-1.78.0%2B-lightgrey.svg"/></a>
+    <a href="https://blog.rust-lang.org/2025/02/20/Rust-1.85.0.html"><img alt="Rustc Version 1.85.0+" src="https://img.shields.io/badge/rustc-1.85.0%2B-lightgrey.svg"/></a>
   </p>
 
   <h4>

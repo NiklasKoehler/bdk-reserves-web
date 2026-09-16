@@ -21,6 +21,11 @@ The app now runs entirely in the browser. There is no backend left.
   checked against the txid requested, so the Esplora server cannot inflate the
   reported total.
 - Confirmation depth is configurable in the UI, still defaulting to 3.
+- `bdk-reserves` comes from crates.io (3.0.0) now that its bdk_wallet 1.0 port
+  has been merged upstream, instead of a git branch on a fork. That brings
+  `bdk_wallet` 3 and `bitcoinconsensus` 0.105, so signatures are checked by the
+  script interpreter from Bitcoin Core 25.1, and lifts the minimum Rust
+  version to 1.85.
 - The page has a "Load example" button that fills in a real testnet proof,
   along with a note explaining that its UTXOs have since been spent.
 - Verification failures are explained in plain language rather than only as the
@@ -43,6 +48,9 @@ The app now runs entirely in the browser. There is no backend left.
 ### Removed
 
 - The actix-web HTTP service and its `/proof` endpoint.
+- The `libc` stand-in crate for the wasm build. `bitcoinconsensus` 0.105 does
+  not need it, and without the patch the wasm build no longer rewrites
+  `Cargo.lock`.
 
 ## [v0.1.10]
 

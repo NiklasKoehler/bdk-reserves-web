@@ -17,8 +17,6 @@ WASM_BINDGEN_VERSION="${WASM_BINDGEN_VERSION:-0.2.127}"  # keep in step with Car
 TOOLS_DIR="${TOOLS_DIR:-$PWD/.tools}"
 WASI_SDK_PATH="${WASI_SDK_PATH:-$TOOLS_DIR/wasi-sdk-${WASI_SDK_VERSION}-x86_64-linux}"
 
-LOCKFILE_BACKUP="$(mktemp)"
-
 log() { printf '\033[1;34m==>\033[0m %s\n' "$*"; }
 
 if [ ! -d "$WASI_SDK_PATH" ]; then
@@ -60,17 +58,8 @@ export CXXFLAGS_wasm32_unknown_unknown="--target=wasm32-wasip1 -fexceptions"
 export CXXSTDLIB_wasm32_unknown_unknown="c++"
 export RUSTFLAGS="-L $SYSROOT/lib/wasm32-wasip1 -C link-arg=-lc++abi"
 
-# Patching libc turns it into a path dependency, which rewrites its entry in
-# Cargo.lock. The committed lockfile describes the native build, so keep that
-# the canonical one and put it back afterwards rather than letting the two
-# builds fight over it.
-if [ -f Cargo.lock ]; then
-  cp Cargo.lock "$LOCKFILE_BACKUP"
-  trap 'mv -f "$LOCKFILE_BACKUP" Cargo.lock 2>/dev/null || true' EXIT
-fi
-
 log "Building the wasm module"
-cargo build --release --target wasm32-unknown-unknown --config .cargo/wasm-patch.toml
+cargo build --release --target wasm32-unknown-unknown
 
 log "Generating JS bindings"
 rm -rf dist
