@@ -3,7 +3,7 @@
 
   <img src="./static/bdk.png" width="220" />
   <br>
-  <a href="https://seba.swiss"><img src="./static/seba-bank-logo-bank-lange-green-ohne-tagline.png" width="250" /></a>
+  <a href="https://www.aminagroup.com"><img src="./static/amina_logo.png" width="250" /></a>
 
   <p>
     <strong>Proof of reserves for Bitcoin dev kit - browser app</strong>
@@ -11,7 +11,7 @@
 
   <p>
     <a href="https://github.com/bitcoindevkit/bdk-reserves/blob/master/LICENSE"><img alt="MIT or Apache-2.0 Licensed" src="https://img.shields.io/badge/license-MIT%2FApache--2.0-blue.svg"/></a>
-    <a href="https://github.com/weareseba/bdk-reserves-web/actions?query=workflow%3ACI"><img alt="CI Status" src="https://github.com/weareseba/bdk-reserves-web/workflows/CI/badge.svg"></a>
+    <a href="https://github.com/AminaBank/bdk-reserves-web/actions?query=workflow%3ACI"><img alt="CI Status" src="https://github.com/AminaBank/bdk-reserves-web/workflows/CI/badge.svg"></a>
     <a href="https://blog.rust-lang.org/2025/02/20/Rust-1.85.0.html"><img alt="Rustc Version 1.85.0+" src="https://img.shields.io/badge/rustc-1.85.0%2B-lightgrey.svg"/></a>
   </p>
 
@@ -98,7 +98,7 @@ Pages serves the app from a subdirectory rather than a domain root, which is why
 everything in `web/` refers to its assets relatively.
 
 ## Sponsorship
-The implementation of <b>bdk-reserves-web</b> was sponsored by <a href="https://seba.swiss">SEBA Bank</a>.
+The implementation of <b>bdk-reserves-web</b> was sponsored by <a href="https://www.aminagroup.com">AMINA Bank</a>.
 
 ## License
 

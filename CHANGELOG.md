@@ -26,6 +26,9 @@ The app now runs entirely in the browser. There is no backend left.
   `bdk_wallet` 3 and `bitcoinconsensus` 0.105, so signatures are checked by the
   script interpreter from Bitcoin Core 25.1, and lifts the minimum Rust
   version to 1.85.
+- SEBA Bank is AMINA Bank now, and the branding follows. The example proof's
+  message still names SEBA, because it is signed into the proof and cannot
+  change.
 - The page has a "Load example" button that fills in a real testnet proof,
   along with a note explaining that its UTXOs have since been spent.
 - Verification failures are explained in plain language rather than only as the
