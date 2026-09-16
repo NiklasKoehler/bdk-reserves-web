@@ -54,7 +54,8 @@ server that hides a UTXO makes a valid proof fail, which is the safe direction.
 ## Building
 
 Needs a Rust toolchain, `curl` and `node` (for the end to end test). Everything
-else is fetched into `.tools/` on first build.
+else is fetched into `.tools/` on first build. The fetched toolchain is the
+Linux x86_64 build, so that is currently the only host `build.sh` supports.
 
 ```shell
 make build     # produces dist/

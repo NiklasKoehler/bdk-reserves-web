@@ -109,7 +109,10 @@ form.addEventListener('submit', async (event) => {
     addresses: parseAddresses(document.getElementById('addresses').value),
     message: document.getElementById('message').value,
     proof_psbt: document.getElementById('psbt').value,
-    confirmations: Number(document.getElementById('confirmations').value),
+    // An emptied field means "the default", not zero confirmations.
+    confirmations: document.getElementById('confirmations').value === ''
+      ? null
+      : Number(document.getElementById('confirmations').value),
     esplora_url: document.getElementById('esplora').value.trim() || null,
   }
 

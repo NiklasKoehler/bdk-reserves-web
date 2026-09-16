@@ -125,11 +125,17 @@ pub extern "C" fn __cxa_atexit(_f: *mut c_void, _arg: *mut c_void, _dso: *mut c_
 /// strings inside Bitcoin Core itself rather than on anything callers pass in,
 /// so trapping is the honest behaviour. The slot exists because the compiler
 /// constructs the exception object before handing it to `__cxa_throw`.
-static mut EXCEPTION_SLOT: [u8; 256] = [0; 256];
+///
+/// `UnsafeCell` rather than `static mut`, so handing out the pointer needs no
+/// unsafe block on any compiler this builds with. wasm is single threaded, so
+/// the `Sync` claim costs nothing.
+struct ExceptionSlot(core::cell::UnsafeCell<[u8; 256]>);
+unsafe impl Sync for ExceptionSlot {}
+static EXCEPTION_SLOT: ExceptionSlot = ExceptionSlot(core::cell::UnsafeCell::new([0; 256]));
 
 #[no_mangle]
 pub extern "C" fn __cxa_allocate_exception(_size: usize) -> *mut c_void {
-    core::ptr::addr_of_mut!(EXCEPTION_SLOT) as *mut c_void
+    EXCEPTION_SLOT.0.get() as *mut c_void
 }
 
 #[no_mangle]

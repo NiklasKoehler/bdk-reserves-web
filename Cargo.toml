@@ -32,9 +32,6 @@ getrandom = { version = "0.2", features = ["js"] }
 version = "0.3"
 features = ["Request", "RequestInit", "Response"]
 
-[dev-dependencies]
-bdk_wallet = { version = "1.0.0", features = ["std"] }
-
 [profile.release]
 opt-level = 'z'     # Optimize for size
 lto = true          # Enable link-time optimization
