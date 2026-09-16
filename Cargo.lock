@@ -64,7 +64,6 @@ dependencies = [
  "futures-util",
  "getrandom",
  "js-sys",
- "log",
  "serde",
  "serde-wasm-bindgen",
  "serde_json",
